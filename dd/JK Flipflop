@@ -1,0 +1,22 @@
+module JKFF (JK, CLK, Q, Qbar);
+
+input [1:0] JK;
+input CLK;
+
+output Q, Qbar;
+
+reg Q, Qbar;
+
+always @(posedge CLK) 
+begin
+    case (JK)
+        2'b00: Q = Q;
+        2'b01: Q = 0;
+        2'b10: Q = 1;
+        2'b11: Q = ~Q;
+    endcase
+
+    Qbar = ~Q;
+    end
+
+endmodule
