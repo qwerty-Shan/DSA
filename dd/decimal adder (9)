@@ -1,0 +1,22 @@
+module p5deci (a, b, sum, cout);
+
+input [3:0] a;
+input [3:0] b;
+
+output [3:0] sum;
+output cout;
+
+reg [3:0] sum;
+reg cout;
+
+always @(a, b) 
+begin
+    {cout, sum} = a + b;
+
+    if (a > 9 || b > 9 || sum > 9) 
+begin
+        {count, sum} = sum + 6;
+    end
+end
+
+endmodule
