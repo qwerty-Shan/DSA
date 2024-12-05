@@ -1,0 +1,14 @@
+module allgate (x, y, z);
+
+input x, y;
+output [0:6] z;
+
+assign z[0] = x&y;
+assign z[1] = x/y;
+assign z[2] = ~x;
+assign z[3] = ~(x&y);
+assign z[4] = ~(x/y);
+assign z[5] = x ^ y;
+assign z[6] = ~(x ^ y);
+
+endmodule
