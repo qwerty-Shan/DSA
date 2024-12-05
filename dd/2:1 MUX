@@ -1,0 +1,33 @@
+module mux21 (i, s, y);
+input [1:0] i;
+input s;
+output y;
+
+reg y;
+
+always @(i, s)
+ begin
+    if (s)
+        y = i[1];
+    else
+        y = i[0];
+      case (s)
+        1'b0: y = i[0];
+        1'b1: y = i[1];
+    endcase
+end
+
+endmodule
+
+//structural code
+module mux21 (a, b, s, y);
+input a, b, s;
+output y;
+
+wire m1, m2;
+
+assign m1 = ~s;
+assign m2 = m1 & a;
+assign y = m2 | m1 ;
+
+endmodule
