@@ -1,0 +1,23 @@
+module SR_FlipFlop (SR, clk, rst, q, qbar);
+input [1:0] SR;
+input clk, rst;
+output q, qbar;
+reg q, qbar;
+
+always @(posedge clk)
+begin
+    if (rst == 1)
+        q = 0;
+    else
+    begin
+        case (SR)
+            2'b00: q = q;   
+            2'b01: q = 0;   
+            2'b10: q = 1;   
+            2'b11: q = 1;  
+        endcase
+    end
+    qbar = ~q;
+end
+
+endmodule
