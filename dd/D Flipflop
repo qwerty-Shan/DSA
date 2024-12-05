@@ -1,0 +1,20 @@
+module dff (d, clk, reset, Q, Qb);
+
+input d, clk, reset;
+
+output Q, Qb;
+
+reg Q, Qb;
+
+always @(posedge clk or posedge reset) 
+    if (reset) 
+       begin
+        Q = 1'b0;
+        Qb = ~Q;
+        end 
+    else 
+        begin
+        Q = d;
+        Qb = ~Q;
+    end
+endmodule
