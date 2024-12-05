@@ -1,0 +1,10 @@
+module half_subtractor (a, b, d, Bo);
+
+input a, b;
+
+output d, B0;
+
+assign d = a ^ b;
+assign Bo =( ~a )& b;
+
+endmodule
