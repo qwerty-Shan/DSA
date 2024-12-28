@@ -20,8 +20,7 @@ printf("\nMemory is not available");
 exit(1);
 }
 printf("\nEnter the usn,Name,Branch, sem,PhoneNo of the student:");
-scanf("%s %s %s %d %ld", snode -> usn, snode -> name, snode -> branch, & snode -> sem, &
-snode -> phone);
+scanf("%s %s %s %d %ld", snode -> usn, snode -> name, snode -> branch, & snode -> sem, & snode -> phone);
 snode -> link = NULL;
 count++;
 return snode;
@@ -103,8 +102,8 @@ prev -> link = NULL;
 count--;
 return start;
 }
-{
 void display()
+{
 NODE cur;
 int num = 1;
 if (start == NULL)
@@ -116,15 +115,14 @@ printf("\nThe contents of SLL: \n");
 cur = start;
 while (cur != NULL)
 {
-printf("\n|%d| |USN:%s| |Name:%s| |Branch:%s| |Sem:%d| |Ph:%ld|", num, cur -> usn, cur
--> name, cur -> branch, cur -> sem, cur -> phone);
+printf("\n|%d| |USN:%s| |Name:%s| |Branch:%s| |Sem:%d| |Ph:%ld|", num, cur -> usn, cur -> name, cur -> branch, cur -> sem, cur -> phone);
 cur = cur -> link;
 num++;
 }
 printf("\n No of student nodes is %d \n", count);
 }
-{
 void stackdemo()
+{
 int ch;
 while (1)
 {
@@ -149,8 +147,8 @@ return;
 }
 return;
 }
-{
 int main()
+{
 int ch, i, n;
 while (1)
 {
