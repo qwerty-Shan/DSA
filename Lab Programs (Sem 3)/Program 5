@@ -1,62 +1,80 @@
 #include<stdio.h>
-#include<stdlib.h>
+#include<string.h>
 #include<math.h>
-int i, top = -1;
-int op1, op2, res, s[20];
-char postfix[90], symb;
-void push(int item)
+int count=0,top=-1;
+int operate(char symb,int op1,int op2)
 {
-top = top + 1;
-s[top] = item;
+switch(symb)
+{
+case '+':return op1+op2;
+case '-':return op1-op2;
+case '/':return op1/op2;
+case '*':return op1*op2;
+case '%':return op1%op2;
+case '^':return op1^op2;
 }
-int pop()
-{
-int item;
-item = s[top];
-top = top - 1;
-return item;
 }
+void push(int stack[],int d)
 {
+stack[++top]=d;
+}
+int pop(int stack[])
+{
+return (stack[top--]);
+}
+void tower(int n,char src,char intr,char des)
+{
+if(n)
+{
+tower(n-1,src,des,intr);
+printf("disk %d moved fron %c to %c\n",n,src,des);
+count++;
+tower(n-1,intr,src,des);
+}
+}
 void main()
-printf("\nEnter a valid postfix expression:\n");
-scanf("%s", postfix);
-for (i = 0; postfix[i] != '\0'; i++)
 {
-symb = postfix[i];
-if (isdigit(symb))
+int n,choice,i,op1,op2,ans,stack[50];
+char expr[20],symb;
+while(1)
 {
-push(symb - '0');
+printf("\n program to perform evaluation of suffix expression and tower of hanoi problem\n");
+printf("\n1.evaluation suffix expression\n2.tower of hanoi\n3.exit\n");
+printf("\n enter your choice:");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1:
+printf("enter the suffix expresion:");
+scanf("%s",expr);
+for(i=0;expr[i]!='\0';i++)
+{
+symb=expr[i];
+if(symb>='0'&&symb<='9')
+{
+push(stack,symb-'0');
 }
 else
 {
-op2 = pop();
-op1 = pop();
-switch (symb)
-{
-case '+':
-push(op1 + op2);
-break;
-case '-':
-push(op1 - op2);
-break;
-case '*':
-push(op1 * op2);
-break;
-case '/':
-push(op1 / op2);
-break;
-case '%':
-push(op1 % op2);
-break;
-case '$':
-case '^':
-push(pow(op1, op2));
-break;
-default:
-push(0);
+op2=pop(stack);
+op1=pop(stack);
+printf("given expr is %d%d%c\n",op2,op1,symb);
+ans=operate(symb,op1,op2);
+push(stack,ans);
 }
 }
+ans=pop(stack);
+printf("the result of the suffix expression is %d\n",ans);
+break;
+case 2:
+printf("enter the number of disks:");
+scanf("%d",&n);
+count=0;
+tower(n,'a','b','c');
+printf("number of moves taken to move disks from source to destination:%d\n",count);
+break;
+case 3:
+return;
 }
-res = pop();
-printf("\n Result = %d", res);
+}
 }
