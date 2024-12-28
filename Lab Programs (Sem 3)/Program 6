@@ -104,4 +104,3 @@ printf("Invalid choice! Please enter a valid option.\n");
 while(choice != 4);
 return 0;
 }
-Output:
