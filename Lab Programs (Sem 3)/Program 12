@@ -3,17 +3,17 @@
 #include<stdlib.h>
 
 int key[20], n, m;
-int * ht, index;
+int * ht, indx;
 int count = 0;
 
 void insert(int key)
 {
-index = key % m;
-while (ht[index] != -1)
+indx = key % m;
+while (ht[indx] != -1)
 {
-index = (index + 1) % m;
+indx = (indx + 1) % m;
 }
-ht[index] = key;
+ht[indx] = key;
 count++;
 }
 
