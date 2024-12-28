@@ -185,7 +185,7 @@ printf("\n6:DeleteAtFront");
 printf("\n7:Double Ended Queue Demo using DLL ");
 printf("\n8:Exit \n");
 printf("\nPlease enter your choice: ");
-scanf("%d", & ch)
+scanf("%d", & ch);
 switch (ch)
 {
 case 1:
