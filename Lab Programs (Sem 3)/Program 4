@@ -14,8 +14,8 @@ evaluate();
 printf("\nThe entered infix expression is :\n %s \n", infix);
 printf("\nThe corresponding postfix expression is :\n %s \n", postfix);
 }
-{
 void evaluate()
+{
 int i = 0, j = 0;
 char symb, temp;
 push('#');
@@ -23,8 +23,7 @@ for (i = 0; infix[i] != '\0'; i++)
 {
 symb = infix[i];
 switch (symb)
-{
-case '(':
+{case '(':
 push(symb);
 break;
 case ')':
@@ -43,8 +42,8 @@ case '/':
 case '%':
 case '^':
 case '$':
-{
 while (prec(stack[top]) >= prec(symb))
+{
 temp = pop();
 postfix[j] = temp;
 j++;
@@ -62,22 +61,21 @@ temp = pop();
 postfix[j] = temp;
 j++;
 }
-postfix[j] = '\0';
-}
-{
+postfix[j] = '\0';}
 void push(char item)
+{
 top = top + 1;
 stack[top] = item;
 }
-{
 char pop()
+{
 char item;
 item = stack[top];
 top = top - 1;
 return item;
 }
-{
 int prec(char symb)
+{
 int p;
 switch (symb)
 {
@@ -96,8 +94,7 @@ case '*':
 case '/':
 case '%':
 p = 2;
-break;
-case '^':
+break;case '^':
 case '$':
 p = 3;
 break;
